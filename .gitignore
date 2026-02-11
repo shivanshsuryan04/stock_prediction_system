@@ -1,0 +1,26 @@
+# Environments & Secrets
+.env
+.venv
+env/
+venv/
+ENV/
+
+# Node / Frontend (Client)
+node_modules/
+.next/
+dist/
+build/
+.cache/
+
+# Python / ML (Server & ML-Model)
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+.ipynb_checkpoints/
+
+# Data & Logs (Stock Prediction specific)
+*.csv
+*.log
+data/raw_data/
