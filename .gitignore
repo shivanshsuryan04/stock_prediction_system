@@ -20,6 +20,11 @@ __pycache__/
 .Python
 .ipynb_checkpoints/
 
+# ML Models
+*.pkl
+*.joblib
+*.h5
+
 # Data & Logs (Stock Prediction specific)
 *.csv
 *.log
