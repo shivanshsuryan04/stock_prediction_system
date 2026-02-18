@@ -22,6 +22,7 @@ __pycache__/
 
 # ML Models
 *.pkl
+*.png
 *.joblib
 *.h5
 
@@ -29,3 +30,12 @@ __pycache__/
 *.csv
 *.log
 data/raw_data/
+data/processed/
+
+# OS Specific
+.DS_Store
+Thumbs.db
+
+# Flask/Server temp files
+instance/
+.pytest_cache/
