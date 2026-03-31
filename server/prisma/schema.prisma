@@ -1,0 +1,57 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ============================================================
+// ENUMS
+// ============================================================
+enum Role {
+  USER
+  ADMIN
+}
+
+// ============================================================
+// MODELS
+// ============================================================
+
+model User {
+  id           String      @id @default(uuid())
+  name         String
+  email        String      @unique
+  passwordHash String       // explicitly matching auth.controller.ts
+  role         Role        @default(USER)
+  createdAt    DateTime    @default(now())
+  
+  // Relations
+  watchList    WatchList[]
+}
+
+model WatchList {
+  id        String   @id @default(uuid())
+  ticker    String   
+  addedAt   DateTime @default(now())
+  
+  // Relations
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  // Prevents duplicates of the same ticker for a single user
+  @@unique([userId, ticker])
+}
+
+model PredictionCache {
+  ticker      String   @id // Using ticker as the primary key since it is unique
+  xgbSignal   String
+  lstmSignal  String
+  lstmConf    Float    // Float matches the number type in your TS interface
+  finalSignal String
+  cachedAt    DateTime @default(now())
+}
