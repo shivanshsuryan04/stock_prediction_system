@@ -11,6 +11,7 @@ node_modules/
 dist/
 build/
 .cache/
+npm-debug.log*
 
 # Python / ML (Server & ML-Model)
 __pycache__/
@@ -20,16 +21,16 @@ __pycache__/
 .Python
 .ipynb_checkpoints/
 
-# ML Models
+# ML Models & Output
 *.pkl
-*.png
+feature_importance_results.png
 *.joblib
 *.h5
 
 # Data & Logs (Stock Prediction specific)
 *.csv
 *.log
-data/raw_data/
+data/raw/
 data/processed/
 
 # OS Specific
