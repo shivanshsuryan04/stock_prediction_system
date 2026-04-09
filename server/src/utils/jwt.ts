@@ -23,7 +23,7 @@ export const verifyRefreshToken = (token: string): JwtPayload =>
 export const REFRESH_COOKIE_OPTIONS: CookieOptions = {
   httpOnly: true,
   secure: process.env.NODE_ENV === "production",
-  sameSite: "strict",
+  sameSite: "lax", // <-- Changed from "strict" to "lax"
   maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days in ms
-  path: "/api/auth",
+  path: "/", // <-- Changed to "/" just to be safe during development
 };

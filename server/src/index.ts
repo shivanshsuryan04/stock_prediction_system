@@ -4,6 +4,7 @@ import cors from "cors";
 import helmet from "helmet";
 import morgan from "morgan";
 import rateLimit from "express-rate-limit";
+import cookieParser from "cookie-parser";
 import { logger } from "./utils/logger";
 import { errorHandler } from "./middleware/errorHandler";
 import authRoutes from "./routes/auth.routes";
@@ -37,7 +38,7 @@ app.use(globalLimiter);
 
 const authLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
-  max: 20,
+  max: process.env.NODE_ENV === "production" ? 20 : 500,
   message: { success: false, message: "Too many login attempts. Please try again later." },
 });
 
@@ -46,6 +47,7 @@ const authLimiter = rateLimit({
 // ============================================================
 app.use(express.json({ limit: "10kb" }));
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 app.use(
   morgan("combined", {
     stream: { write: (msg: string) => logger.info(msg.trim()) },

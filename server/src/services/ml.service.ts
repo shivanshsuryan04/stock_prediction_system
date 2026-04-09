@@ -100,18 +100,18 @@ export const getPrediction = async (ticker: string): Promise<PredictionResult> =
   const upserted = await prisma.predictionCache.upsert({
     where: { ticker },
     update: {
-      xgbSignal: prediction.xgboost_prediction,
-      lstmSignal: prediction.lstm_prediction,
-      lstmConf: prediction.lstm_confidence,
-      finalSignal: prediction.final_signal,
-      cachedAt: new Date(),
+      xgbSignal:   prediction.xgbSignal,
+      lstmSignal:  prediction.lstmSignal,
+      lstmConf:    prediction.lstmConf,
+      finalSignal: prediction.finalSignal,
+      cachedAt:    new Date(),
     },
     create: {
       ticker,
-      xgbSignal: prediction.xgboost_prediction,
-      lstmSignal: prediction.lstm_prediction,
-      lstmConf: prediction.lstm_confidence,
-      finalSignal: prediction.final_signal,
+      xgbSignal:   prediction.xgbSignal,
+      lstmSignal:  prediction.lstmSignal,
+      lstmConf:    prediction.lstmConf,
+      finalSignal: prediction.finalSignal,
     },
   });
 

@@ -117,7 +117,12 @@ export const refreshToken = async (
 };
 
 export const logout = (_req: Request, res: Response): void => {
-  res.clearCookie("refreshToken", { path: "/api/auth" });
+  res.clearCookie("refreshToken", { 
+    path: "/", 
+    sameSite: "lax", 
+    secure: process.env.NODE_ENV === "production", 
+    httpOnly: true 
+  });
   res.status(200).json({ success: true, message: "Logged out successfully." });
 };
 

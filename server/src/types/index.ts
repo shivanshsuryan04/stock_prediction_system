@@ -53,10 +53,15 @@ export interface PredictionEntry {
 /** Shape returned by the Python FastAPI /predict/:ticker endpoint */
 export interface PythonApiPrediction {
   ticker: string;
-  xgboost_prediction: string;
-  lstm_prediction: string;
-  lstm_confidence: number;
-  final_signal: string;
+  xgbSignal: string;
+  lstmSignal: string;
+  lstmConf: number;
+  finalSignal: string;
+  // Add these if you want to use the extra metadata
+  xgbProbUp?: number;
+  xgbProbDown?: number;
+  fromCache?: boolean;
+  cachedAt?: string;
 }
 
 // ============================================================
