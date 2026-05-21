@@ -450,5 +450,3 @@ Always conduct your own research before making investment decisions.
 Shivansh Suryan
 
 LinkedIn: www.linkedin.com/in/shivanshsuryan04
-
-Source content adapted from uploaded README draft. 
